@@ -3,6 +3,7 @@ library(htmltools)
 library(tidyverse)
 library(jsonlite)
 library(httr)
+library(usethis)
 
 #Second try using read_html from xml2 package
 my_scrape3 <- read_html("https://www.1001tracklists.com/tracklist/9l2wdv1/two-friends-big-bootie-mix-018-2020-10-26.html")
@@ -61,7 +62,8 @@ songlist_tibble <- tibble(
          volume = 18) %>% 
   select(volume, track_number, track_start_time, track_end_time, artist_name, song_name) 
 
-
+songlist_tibble %>% 
+  write_csv("bbm_tracklists/bbm_18.csv", na = "")
 
 
 
